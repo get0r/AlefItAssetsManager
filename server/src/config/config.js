@@ -10,7 +10,7 @@ const development = {
   db: {
     host: process.env.DEV_DB_HOST || 'localhost',
     port: parseInt(process.env.DEV_DB_PORT, 10) || 27017,
-    name: process.env.DEV_DB_NAME || 'simiensTodo',
+    name: process.env.DEV_DB_NAME || 'AlefItAssetManager_DEV_DB',
   },
 };
 
