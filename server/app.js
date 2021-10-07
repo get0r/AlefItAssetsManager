@@ -42,9 +42,9 @@ app.use(httpLogger);
 app.use('/api/v1', require('./api/routes/v1'));
 
 app.all('*', (req, res, next) => {
-    next(
-        new NotFoundError(`path ${req.originalUrl} not found.`),
-    );
+  next(
+    new NotFoundError(`path ${req.originalUrl} not found.`),
+  );
 });
 
 //  central error handler middleware.
