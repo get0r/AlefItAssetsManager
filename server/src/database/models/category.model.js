@@ -5,11 +5,15 @@ const categorySchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  desc: {
+    type: String,
+    required: true,
+  },
 },
 {
   timestamps: true,
 });
 
-const CategoryModel = mongoose.model('admin', categorySchema);
+const CategoryModel = mongoose.model('Category', categorySchema);
 
 module.exports = CategoryModel;
