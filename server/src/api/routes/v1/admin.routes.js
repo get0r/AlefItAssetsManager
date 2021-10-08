@@ -15,6 +15,6 @@ adminRouter
   .post('/change-password', authAdmin, AdminController.changeAdminPassword);
 
 adminRouter
-  .get('/signOut', (req, res) => res.send('signOut'));
+  .get('/signOut', AdminController.signOut);
 
 module.exports = adminRouter;
