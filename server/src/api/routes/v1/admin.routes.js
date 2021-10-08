@@ -1,6 +1,7 @@
 const express = require('express');
 
 const AdminController = require('../../controllers/admin.controller');
+const authAdmin = require('../../middlewares/auth/user.auth');
 
 const adminRouter = express.Router();
 
@@ -11,7 +12,7 @@ adminRouter
   .post('/signIn', AdminController.adminSignIn);
 
 adminRouter
-  .post('/change-password', (req, res) => res.send('signin'));
+  .post('/change-password', authAdmin, AdminController.changeAdminPassword);
 
 adminRouter
   .get('/signOut', (req, res) => res.send('signOut'));
