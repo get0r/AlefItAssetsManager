@@ -1,3 +1,4 @@
+const { hash } = require('bcrypt');
 const JWT = require('jsonwebtoken');
 
 const config = require('../config/config');
@@ -49,6 +50,26 @@ const signIn = async ({ username, password }) => {
   }
 
   return admin;
+};
+
+/**
+ * a method to change password field of an admin account
+ * of the admin username and the associated password.
+ * or throw an error in times of error.
+ * @param {Object} param0 user details.
+ */
+const changePassword = async ({ username, newPassword }) => {
+  const admin = await AdminModel.findOne({ username }).lean();
+  //   user doesn't exist so stop proceeding.
+  if (!admin) {
+    return null;
+  }
+
+  const hashedPass = await hashString(newPassword);
+
+  const newAdmin = await AdminModel.updateOne({ username }, { $set: { password: hashedPass } });
+
+  return newAdmin;
 };
 
 /**
