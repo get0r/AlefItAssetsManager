@@ -7,6 +7,7 @@ const { appLogger } = require('../helpers/logger/appLogger');
  */
 const serverTerminator = () => {
   global.server.close((err) => {
+    appLogger.info('Shutting down server gracefully due to error...');
     if (err) {
       appLogger.error(err.message);
       process.exit(1);

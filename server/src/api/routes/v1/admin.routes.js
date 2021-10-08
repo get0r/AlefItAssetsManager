@@ -1,12 +1,14 @@
 const express = require('express');
 
+const AdminController = require('../../controllers/admin.controller');
+
 const adminRouter = express.Router();
 
 adminRouter
-  .post('/signUp', (req, res) => res.send('signup'));
+  .post('/signUp', AdminController.setupAdminAccount);
 
 adminRouter
-  .post('/signIn', (req, res) => res.send('signin'));
+  .post('/signIn', AdminController.adminSignIn);
 
 adminRouter
   .post('/change-password', (req, res) => res.send('signin'));

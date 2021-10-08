@@ -26,7 +26,6 @@ const signUp = async ({
     password: hashedPassword,
   });
   const savedAdmin = await admin.save();
-
   return savedAdmin;
 };
 
