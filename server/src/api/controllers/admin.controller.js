@@ -53,7 +53,27 @@ const adminSignIn = catchAsync(async (req, res) => {
   return sendSuccessResponse(res, _.pick(admin, ['_id', 'fname', 'lname', 'username']));
 });
 
+/**
+ * a method to try change password of the admin by calling services function
+ * and send response to the client
+ * @param {*} req request object
+ * @param {*} res response object
+ * @param {*} next next routing function in the chain
+ */
+const changeAdminPassword = catchAsync(async (req, res) => {
+  const adminData = req.body;
+  const admin = await AdminServices.changePassword(adminData);
+
+  if (admin === null) {
+    return sendErrorResponse(res, BAD_REQUEST, 'Admin Account Not Found!');
+  }
+  appLogger.info(`Admin Change Password Successful adminId ${admin._id}`);
+
+  return sendSuccessResponse(res, _.pick(admin, ['_id', 'fname', 'lname', 'username']));
+});
+
 module.exports = {
   setupAdminAccount,
   adminSignIn,
+  changeAdminPassword,
 };

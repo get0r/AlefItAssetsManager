@@ -85,5 +85,6 @@ const generateToken = (userId, username) => {
 module.exports = {
   signUp,
   signIn,
+  changePassword,
   generateToken,
 };
