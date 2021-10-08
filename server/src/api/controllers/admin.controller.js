@@ -48,7 +48,6 @@ const adminSignIn = catchAsync(async (req, res) => {
   const token = AdminServices.generateToken(admin._id, admin.username);
   //  place the token on the cookie and send the user
   res.cookie('token', token, { httpOnly: true, secure: config.app.secureCookie, sameSite: true });
-  appLogger.info(`Admin SignIn Successful adminId ${admin._id}`);
 
   return sendSuccessResponse(res, _.pick(admin, ['_id', 'fname', 'lname', 'username']));
 });
@@ -62,7 +61,8 @@ const adminSignIn = catchAsync(async (req, res) => {
  */
 const changeAdminPassword = catchAsync(async (req, res) => {
   const adminData = req.body;
-  const admin = await AdminServices.changePassword(adminData);
+
+  const admin = await AdminServices.changePassword(req.username, adminData.newPassword);
 
   if (admin === null) {
     return sendErrorResponse(res, BAD_REQUEST, 'Admin Account Not Found!');
@@ -72,8 +72,22 @@ const changeAdminPassword = catchAsync(async (req, res) => {
   return sendSuccessResponse(res, _.pick(admin, ['_id', 'fname', 'lname', 'username']));
 });
 
+/**
+ * a method to sign the admin out by calling services function
+ * and send response to the client
+ * @param {*} req request object
+ * @param {*} res response object
+ * @param {*} next next routing function in the chain
+ */
+const signOut = catchAsync(async (req, res) => {
+  res.clearCookie('token');
+
+  return sendSuccessResponse(res, 'Signed Out');
+});
+
 module.exports = {
   setupAdminAccount,
   adminSignIn,
   changeAdminPassword,
+  signOut,
 };

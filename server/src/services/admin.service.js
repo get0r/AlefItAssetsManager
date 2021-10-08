@@ -58,7 +58,7 @@ const signIn = async ({ username, password }) => {
  * or throw an error in times of error.
  * @param {Object} param0 user details.
  */
-const changePassword = async ({ username, newPassword }) => {
+const changePassword = async (username, newPassword) => {
   const admin = await AdminModel.findOne({ username }).lean();
   //   user doesn't exist so stop proceeding.
   if (!admin) {

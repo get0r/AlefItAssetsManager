@@ -22,7 +22,7 @@ const authAdmin = catchAsync(async (req, res, next) => {
   if (!verifiedAdmin) return sendErrorResponse(res, NOT_FOUND, 'Unauthorized Access.');
 
   req.adminId = verifiedAdmin.id;
-  req.userName = verifiedAdmin.username;
+  req.username = verifiedAdmin.username;
   appLogger.info(`Authentication successful for admin with id ${verifiedAdmin.id}`);
 
   return next();
