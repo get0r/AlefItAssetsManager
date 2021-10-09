@@ -1,20 +1,21 @@
 const express = require('express');
+const EmployeeController = require('../../controllers/employee.controller');
 
 const employeeRouter = express.Router();
 
 employeeRouter
-  .post('/employees', (req, res) => res.send('new employee'));
+  .post('/employees', EmployeeController.newEmployee);
 
 employeeRouter
-  .get('/employees', (req, res) => res.send('all employees'));
+  .get('/employees', EmployeeController.getEmployees);
 
 employeeRouter
-  .get('/employees/:employeeId', (req, res) => res.send('single employee'));
+  .get('/employees/:employeeId', EmployeeController.getEmployee);
 
 employeeRouter
-  .get('/employees/:employeeId', (req, res) => res.send('update employee'));
+  .patch('/employees/:employeeId', EmployeeController.getEmployee);
 
 employeeRouter
-  .delete('/employees/:employeeId', (req, res) => res.send('delete employee'));
+  .delete('/employees/:employeeId', EmployeeController.removeEmployee);
 
 module.exports = employeeRouter;
