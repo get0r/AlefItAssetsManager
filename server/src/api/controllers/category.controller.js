@@ -13,7 +13,7 @@ const { BAD_REQUEST, NOT_FOUND } = require('../../helpers/constants/statusCodeCo
 const newCategory = catchAsync(async (req, res) => {
   const category = req.body;
 
-  const savedCategory = await CategoryServices.createCategory(category);
+  const savedCategory = await CategoryServices.createCategory(category.name, category.desc);
 
   if (!savedCategory) {
     return sendErrorResponse(res, BAD_REQUEST, 'category already exists');
