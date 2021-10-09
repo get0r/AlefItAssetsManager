@@ -41,7 +41,7 @@ const getCategoryById = async (categoryId) => {
  * a method to retrieve all categories.
  * @returns retrieved categories- might be empty
  */
-const getCategoriesByUserId = async () => {
+const getAllCategories = async () => {
   const categories = await CategoryModel.find().lean();
   if (!categories) {
     return [];
@@ -70,6 +70,6 @@ const removeCategoryById = async (categoryId) => {
 module.exports = {
   createCategory,
   getCategoryById,
-  getCategoriesByUserId,
+  getAllCategories,
   removeCategoryById,
 };
