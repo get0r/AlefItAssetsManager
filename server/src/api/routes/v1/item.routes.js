@@ -1,20 +1,21 @@
 const express = require('express');
+const ItemController = require('../../controllers/item.controller');
 
 const itemRouter = express.Router();
 
 itemRouter
-  .post('/items', (req, res) => res.send('new item'));
+  .post('/items', ItemController.newItem);
 
 itemRouter
-  .get('/items', (req, res) => res.send('all items'));
+  .get('/items', ItemController.getItem);
 
 itemRouter
-  .get('/items/:itemId', (req, res) => res.send('single item'));
+  .get('/items/:itemId', ItemController.getItems);
 
 itemRouter
-  .get('/items/:itemId', (req, res) => res.send('update item'));
+  .patch('/items/:itemId', ItemController.updateItem);
 
 itemRouter
-  .delete('/items/:itemId', (req, res) => res.send('delete item'));
+  .delete('/items/:itemId', ItemController.removeItem);
 
 module.exports = itemRouter;
