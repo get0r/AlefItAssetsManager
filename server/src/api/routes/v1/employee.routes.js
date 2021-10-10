@@ -13,7 +13,7 @@ employeeRouter
   .get('/employees/:employeeId', EmployeeController.getEmployee);
 
 employeeRouter
-  .patch('/employees/:employeeId', EmployeeController.getEmployee);
+  .patch('/employees/:employeeId', EmployeeController.updateEmployee);
 
 employeeRouter
   .delete('/employees/:employeeId', EmployeeController.removeEmployee);

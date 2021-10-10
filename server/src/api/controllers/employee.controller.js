@@ -64,9 +64,29 @@ const removeEmployee = catchAsync(async (req, res) => {
   return sendSuccessResponse(res, removedEmp);
 });
 
+/**
+   * a method to update an item.
+   * and send response to the client
+   * @param {Object} req request object
+   * @param {Object} res response object
+   */
+const updateEmployee = catchAsync(async (req, res) => {
+  if (!req.body || Object.keys(req.body).length === 0) {
+    return sendErrorResponse(res, BAD_REQUEST, 'Nothing to Update!');
+  }
+  const updatedEmp = await EmployeeService
+    .updateEmployeeById(req.params.employeeId, req.body);
+
+  if (!updatedEmp) {
+    return sendErrorResponse(res, NOT_FOUND, 'Couldn\'t find item.');
+  }
+  return sendSuccessResponse(res, updatedEmp);
+});
+
 module.exports = {
   newEmployee,
   getEmployees,
   getEmployee,
   removeEmployee,
+  updateEmployee,
 };
