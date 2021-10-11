@@ -1,10 +1,10 @@
 import React from 'react';
-import Login from './components/Login';
-import RegisterAdmin from './components/RegisterAdmin';
+import Routes from './routes/index';
+import Home from './pages/Home';
 
 const App = (props) => {
     return (
-        <RegisterAdmin />
+        <Home />
     );
 };
 
