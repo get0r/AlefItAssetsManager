@@ -39,6 +39,7 @@ const SignUp = ({ onSignUp, username, error }) => {
     } else if(username.length > 0) {
         return <Redirect to='/signIn' />
     }
+
     return (
         <div>
             <Modal show={ isModalVisible } title='Sign Up Error' handleClose={handleModalClose}>

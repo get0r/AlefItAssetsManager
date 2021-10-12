@@ -13,12 +13,15 @@ export const adminReducer = (state = INITIAL_STATE, action) => {
     const { type, payload } = action;
 
     switch(type) {
+        case actionTypes.ADMIN_SIGNIN_BEGIN:
         case actionTypes.ADMIN_SIGNUP_BEGIN:
             return {
                 ...state,
                 loading: true,
+                error: null,
             };
         case actionTypes.ADMIN_SIGNUP_SUCCESS:
+        case actionTypes.ADMIN_SIGNIN_SUCCESS:
             return {
                 ...state,
                 ...payload,
@@ -26,6 +29,7 @@ export const adminReducer = (state = INITIAL_STATE, action) => {
                 error: null,
             };
         case actionTypes.ADMIN_SIGNUP_FAIL:
+        case actionTypes.ADMIN_SIGNIN_FAIL:
             return {
                 ...state,
                 loading: false,
