@@ -1,7 +1,7 @@
 import alefApiCreator from './AlefApi';
 import { SIGNUP_ADMIN, SIGNIN_ADMIN } from './constants/ApiConstants';
 
-const adminApi = alefApiCreator();
+const adminApi = alefApiCreator({ withCredentials: true });
 
 export const signUpAdmin = (adminDetail) => adminApi.post(SIGNUP_ADMIN, adminDetail);
 

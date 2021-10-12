@@ -25,7 +25,7 @@ const setupAdminAccount = catchAsync(async (req, res) => {
   }
   const token = AdminServices.generateToken(admin._id, admin.username);
   //  place the token on the cookie and send the user
-  res.cookie('token', token, { httpOnly: true, secure: config.app.secureCookie, sameSite: true });
+  res.cookie('token', token, { httpOnly: config.app.httpCookie, secure: config.app.secureCookie, sameSite: true });
   appLogger.info(`Admin account setup Successful adminId ${admin._id}`);
 
   return sendSuccessResponse(res, _.pick(admin, ['_id', 'fname', 'lname', 'username']));
@@ -47,7 +47,7 @@ const adminSignIn = catchAsync(async (req, res) => {
   }
   const token = AdminServices.generateToken(admin._id, admin.username);
   //  place the token on the cookie and send the user
-  res.cookie('token', token, { httpOnly: true, secure: config.app.secureCookie, sameSite: true });
+  res.cookie('token', token, { httpOnly: config.app.httpCookie, secure: config.app.secureCookie, sameSite: true });
 
   return sendSuccessResponse(res, _.pick(admin, ['_id', 'fname', 'lname', 'username']));
 });

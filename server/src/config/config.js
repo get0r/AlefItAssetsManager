@@ -6,6 +6,7 @@ const development = {
     port: parseInt(process.env.DEV_APP_PORT, 10) || 3048,
     tokenSecret: process.env.TOKEN_SECRET || 'THisVV35463464hlkHLKHN,MBGSJHK987*(',
     secureCookie: false,
+    httpCookie: false,
   },
   db: {
     host: process.env.DEV_DB_HOST || 'localhost',
@@ -19,6 +20,7 @@ const production = {
     port: parseInt(process.env.PROD_APP_PORT, 10),
     tokenSecret: process.env.TOKEN_SECRET,
     secureCookie: true,
+    httpCookie: true,
   },
   db: {
     host: process.env.PROD_DB_HOST,

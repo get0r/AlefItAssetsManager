@@ -24,8 +24,10 @@ app.use(compression());
 //  helmet for header security.
 app.use(helmet());
 
-app.use(cors());
-app.options('*', cors());
+app.use(cors({
+  origin: 'http://localhost:3000',
+  credentials: true,
+}));
 
 //  strip any database related chars from requests for security.
 app.use(mongoSanitize());
