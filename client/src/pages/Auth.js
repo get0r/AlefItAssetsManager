@@ -1,10 +1,11 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import background from '../assets/images/background.svg';
 import SignIn from '../containers/SignIn';
 
 
-const Auth = (props) => {
+const Auth = () => {
     return (
         <section class="flex flex-col md:flex-row h-screen items-center">
             <div class="bg-indigo-600 hidden lg:block w-full md:w-1/2 xl:w-2/3 h-screen">
@@ -17,14 +18,15 @@ const Auth = (props) => {
                     <SignIn />
                     <hr class="my-6 border-gray-300 w-full" />
 
-                    <button type="button" class="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300">
-                        <div class="flex items-center justify-center">
-                            <span class="ml-4">
-                                Setup Admin Account
-                            </span>
-                        </div>
-                    </button>
-
+                    <Link to="/signUp">
+                        <button type="button" class="w-full block bg-white hover:bg-gray-100 focus:bg-gray-100 text-gray-900 font-semibold rounded-lg px-4 py-3 border border-gray-300">
+                            <div class="flex items-center justify-center">
+                                <span class="ml-4">
+                                    Setup Admin Account
+                                </span>
+                            </div>
+                        </button>
+                    </Link>
                 </div>
             </div>
 

@@ -13,11 +13,12 @@ const SignIn = () => {
     };
 
     const onSubmit  = values => {
+        console.log('here in submit')
         alert(JSON.stringify(values));
     };
 
     return (
-        <Formik {...{ initialValues, onSubmit, validationSchema: loginSchema} }>
+        <Formik {...{ initialValues, onSubmit , validationSchema: loginSchema } }>
             {
                 () => (
                     <Form fields={[

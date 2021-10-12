@@ -8,7 +8,7 @@ const CustomForm = ({ fields, submitBtn }) => {
         return fields.map(field => (
             <div key={key++}>
                 <label  className="block text-gray-700">{field.label}</label>
-                <Field type={field.type} name={field.name} placeholder={field.placeholder}  className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" autofocus autocomplete />
+                <Field type={field.type} name={field.name} placeholder={field.placeholder}  className="w-full px-4 py-3 rounded-lg bg-gray-200 mt-2 border focus:border-blue-500 focus:bg-white focus:outline-none" />
                 <div className="text-red-600 font-serif p-2">
                     <ErrorMessage name={field.name} />
                 </div>

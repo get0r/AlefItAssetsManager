@@ -1,10 +1,9 @@
 import axios from 'axios';
-import { BASE_URL, SIGNUP_ADMIN, SIGNIN_ADMIN } from './constants/ApiConstants';
+import { BASE_URL } from './constants/ApiConstants';
 
-const alefApi = axios.create({
-    baseURL: BASE_URL
+const alefApiCreator = params => axios.create({
+    baseURL: BASE_URL,
+    params: params ? params : ''
 });
 
-export const signUpAdmin = (fname, lname, username, password) => alefApi.post(SIGNUP_ADMIN, { fname, lname, username, password });
-
-export const signInAdmin = (username, password) => alefApi.post(SIGNIN_ADMIN, { username, password });
+export default alefApiCreator;

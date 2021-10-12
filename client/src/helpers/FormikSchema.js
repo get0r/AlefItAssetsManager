@@ -18,8 +18,20 @@ const SignUpSchema = yup.object().shape({
         .required(),
 });
 
-const loginSchema = SignUpSchema;
-delete loginSchema.fullName;
+const loginSchema = yup.object().shape({
+    username: yup
+        .string()
+        .min(3)
+        .max(5)
+        .required(),
+
+    password: yup
+        .string()
+        .min(8)
+        .max(16)
+        .required(),
+});
+
 
 export {
     SignUpSchema,
