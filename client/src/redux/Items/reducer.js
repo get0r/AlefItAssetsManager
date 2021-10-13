@@ -12,6 +12,17 @@ export const itemsReducer = (state = INITIAL_STATE, action) => {
     const { type, payload } = action;
 
     switch(type) {
+        case actionTypes.ADD_ITEM_SUCCESS:
+            return {
+                ...state,
+                items: [...state.items, payload],
+                error: null,
+            };
+        case actionTypes.ADD_ITEM_FAIL:
+            return {
+                ...state,
+                error: payload,
+            };
         case actionTypes.LOAD_ITEMS_BEGIN:
             return {
                 ...state,

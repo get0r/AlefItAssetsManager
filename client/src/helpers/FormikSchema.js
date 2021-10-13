@@ -32,8 +32,15 @@ const loginSchema = yup.object().shape({
         .required(),
 });
 
+const itemSchema = yup.object().shape({
+    name: yup
+        .string()
+        .required(),
+});
+
 
 export {
     SignUpSchema,
     loginSchema,
+    itemSchema,
 };

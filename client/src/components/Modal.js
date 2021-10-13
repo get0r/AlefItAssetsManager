@@ -1,6 +1,6 @@
 import React from 'react'
 
-const Modal = ({ children, title, show, handleClose }) => {
+const Modal = ({ children, btnLabel, title, show, handleClose }) => {
     const baseStyle = 'fixed z-10 inset-0 overflow-y-auto';
     const style = show ? `block ${baseStyle}` : `hidden ${baseStyle}`;
 
@@ -37,7 +37,7 @@ const Modal = ({ children, title, show, handleClose }) => {
                             Deactivate
                         </button> */}
                         <button type="button" onClick={handleClose} className="mt-3 w-full inline-flex justify-center rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-base font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 sm:mt-0 sm:ml-3 sm:w-auto sm:text-sm">
-                            Try again
+                            { btnLabel }
                         </button>
                     </div>
                 </div>

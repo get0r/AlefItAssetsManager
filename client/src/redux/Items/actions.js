@@ -3,6 +3,20 @@ import * as ApiFunctions from '../../api/item.api';
 
 import { loadBegin, loadFail, loadSuccess } from '../rootActions';
 
+export const addItem = (item) => {
+    return async dispatch => {
+        try {
+            const itemReq = await ApiFunctions.createItem(item);
+            const itemData = itemReq.data;
+            return dispatch(loadSuccess(actionTypes.ADD_ITEM_SUCCESS, itemData.message));
+        } catch (error) {
+            if(error.response)
+                return dispatch(loadFail(actionTypes.ADD_ITEM_FAIL, error.response.data.message));
+            return dispatch(loadFail(actionTypes.ADD_ITEM_FAIL, error.message));
+        }
+    };
+};
+
 export const loadItems = () => {
     return async dispatch => {
         dispatch(loadBegin(actionTypes.LOAD_ITEMS_BEGIN));

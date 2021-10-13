@@ -6,3 +6,5 @@ const categoryApi = alefApiCreator();
 export const getAllCategories = () => categoryApi.get(CATEGORIES);
 
 export const getCategoryCount = () => categoryApi.get(CATEGORY_COUNT);
+
+export const createCategory = (category) => categoryApi.post(CATEGORIES, category);
