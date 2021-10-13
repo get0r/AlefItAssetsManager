@@ -18,3 +18,16 @@ export const loadItems = () => {
         }
     };
 };
+
+
+export const loadItemCount = () => {
+    return async dispatch => {
+        try {
+            const itemsReq = await ApiFunctions.getItemCount();
+            const itemCount = itemsReq.data;
+            return dispatch(loadSuccess(actionTypes.LOAD_ITEM_COUNT, itemCount.message));
+        } catch (error) {
+            console.log(error);
+        }
+    };
+};

@@ -13,6 +13,9 @@ itemRouter
   .get('/items/:itemId', ItemController.getItem);
 
 itemRouter
+  .get('/itemCount', ItemController.getItemCount);
+
+itemRouter
   .patch('/items/:itemId', ItemController.updateItem);
 
 itemRouter

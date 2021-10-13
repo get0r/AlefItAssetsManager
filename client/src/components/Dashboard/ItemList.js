@@ -4,7 +4,7 @@ import ItemCard from './ItemCard';
 const ItemList = ({ items }) => {
     const renderItems = () => {
         return items.map(item => (
-            <ItemCard item={item} />
+            <ItemCard key={item._id} item={item} />
         ));
     };
 

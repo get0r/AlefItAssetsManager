@@ -13,7 +13,7 @@ categoryRouter
   .get('/categories/:categoryId', CategoryController.getCategory);
 
 categoryRouter
-  .get('/categories/howMany', CategoryController.getCount);
+  .get('/categoryCount', CategoryController.getCategoryCount);
 
 categoryRouter
   .delete('/categories/:categoryId', CategoryController.removeCategory);

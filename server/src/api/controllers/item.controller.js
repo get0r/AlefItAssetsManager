@@ -38,6 +38,12 @@ const getItem = catchAsync(async (req, res) => {
   return sendSuccessResponse(res, item);
 });
 
+const getItemCount = catchAsync(async (req, res) => {
+  const item = await ItemService.countItems();
+
+  return sendSuccessResponse(res, item);
+});
+
 /**
  * a method to get items by it's id (controller) by calling service functions
  * and send response to the client
@@ -87,6 +93,7 @@ module.exports = {
   newItem,
   getItem,
   getItems,
+  getItemCount,
   removeItem,
   updateItem,
 };

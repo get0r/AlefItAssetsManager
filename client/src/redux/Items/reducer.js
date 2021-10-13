@@ -31,6 +31,11 @@ export const itemsReducer = (state = INITIAL_STATE, action) => {
                 loading: false,
                 error: payload,
             };
+        case actionTypes.LOAD_ITEM_COUNT:
+            return {
+                ...state,
+                itemCount: payload,
+            };
         default:
             return state;
     }

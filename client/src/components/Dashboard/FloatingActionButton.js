@@ -6,7 +6,7 @@ const FloatingActionButton = ({ onClick }) => {
     return (
         <Container>
             <Button
-                tooltip="The big plus button!"
+                tooltip="Create Item/Category"
                 icon="fas fa-plus"
                 styles={ { backgroundColor: darkColors.lighterRed, color: lightColors.white } }
                 onClick={onClick}

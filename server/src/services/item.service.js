@@ -37,6 +37,12 @@ const getItemById = async (itemId) => {
   return item;
 };
 
+const countItems = async () => {
+  const itemCount = await ItemModel.countDocuments();
+
+  return itemCount;
+};
+
 /**
  * a method to retrieve all items.
  * @returns retrieved items- might be empty
@@ -92,4 +98,5 @@ module.exports = {
   getItemById,
   removeItemById,
   updateItemById,
+  countItems,
 };

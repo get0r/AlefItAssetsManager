@@ -6,4 +6,9 @@ export const SIGNOUT_ADMIN = '/signOut';
 
 
 export const ITEMS = '/items';
+export const ITEM_COUNT = '/itemCount';
+
+export const CATEGORIES = '/categories';
+export const CATEGORY_COUNT = '/categoryCount';
+
 export const withId = (id,route) => `${route}/${id}`;
