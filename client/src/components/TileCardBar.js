@@ -1,7 +1,7 @@
 import React from 'react';
 import TileCard from './TileCard';
 
-const TileCardBar = (props) => {
+const TileCardBar = () => {
     return (
             <div  className="mt-4">
                 <div  className="flex flex-wrap -mx-6">

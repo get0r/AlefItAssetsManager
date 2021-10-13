@@ -13,6 +13,9 @@ categoryRouter
   .get('/categories/:categoryId', CategoryController.getCategory);
 
 categoryRouter
+  .get('/categories/howMany', CategoryController.getCount);
+
+categoryRouter
   .delete('/categories/:categoryId', CategoryController.removeCategory);
 
 module.exports = categoryRouter;

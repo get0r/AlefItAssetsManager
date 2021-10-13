@@ -67,9 +67,16 @@ const removeCategoryById = async (categoryId) => {
   return toBeRemoved;
 };
 
+const countCategory = async () => {
+  const num = await CategoryModel.countDocuments().lean();
+
+  return num;
+};
+
 module.exports = {
   createCategory,
   getCategoryById,
   getAllCategories,
   removeCategoryById,
+  countCategory,
 };

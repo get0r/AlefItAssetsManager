@@ -38,6 +38,12 @@ const getCategory = catchAsync(async (req, res) => {
   return sendSuccessResponse(res, category);
 });
 
+const getCount = catchAsync(async (req, res) => {
+  const numCategory = await CategoryServices.countCategory();
+
+  return sendSuccessResponse(res, numCategory);
+});
+
 /**
  * a method to get categories for a user by it's id (controller) by calling service functions
  * and send response to the client
@@ -67,6 +73,7 @@ const removeCategory = catchAsync(async (req, res) => {
 module.exports = {
   newCategory,
   getCategory,
+  getCount,
   getCategories,
   removeCategory,
 };
