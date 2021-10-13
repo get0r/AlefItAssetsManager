@@ -4,8 +4,7 @@ import placeholderImage from '../assets/images/background.svg';
 
 const ItemCard = (props) => {
     return (
-
-        <div className="p-4 bg-white shadow-xl max-w-xl rounded-xl flex justify-start dark:bg-gray-800 md:flex-row flex-col gap-4">
+        <div className="p-4 m-4 bg-white shadow-xl max-w-xl rounded-xl flex justify-start dark:bg-gray-800 md:flex-row flex-col gap-4">
             <div className="relative">
                 <img src={placeholderImage} alt="" className="rounded-xl w-full md:w-auto md:max-h-40" />
                 <span className="px-2 py-1 text-white bg-gray-700 text-xs rounded absolute right-2 bottom-2 bg-opacity-50">

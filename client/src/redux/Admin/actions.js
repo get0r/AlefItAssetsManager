@@ -24,11 +24,22 @@ export const AdminSignIn = admin => {
         try {
             const adminReq = await ApiFunctions.signInAdmin(admin);
             const adminData = adminReq.data;
-            if(adminData.success) {
-                return dispatch(loadSuccess(actionTypes.ADMIN_SIGNIN_SUCCESS, adminData.message));
-            }
+
+            return dispatch(loadSuccess(actionTypes.ADMIN_SIGNIN_SUCCESS, adminData.message));
         } catch (error) {
             dispatch(loadFail(actionTypes.ADMIN_SIGNIN_FAIL, error.response.data.message));
+        }
+    };
+};
+
+export const AdminSignOut = () => {
+    return async dispatch => {
+        try {
+            await ApiFunctions.signOutAdmin();
+            dispatch(loadBegin(actionTypes.ADMIN_SIGNOUT));
+            return window.location.reload();
+        } catch (error) {
+            console.log(error);
         }
     };
 };
