@@ -17,9 +17,7 @@ const createItem = async (itemDetails) => {
     return null;
   }
 
-  const newItem = await new ItemModel({
-    itemDetails,
-  }).save();
+  const newItem = await new ItemModel(itemDetails).save();
 
   return newItem;
 };

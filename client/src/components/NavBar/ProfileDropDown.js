@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { AdminSignOut } from '../../redux/Admin/actions';
-import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { isAuthenticated } from '../../helpers/isAuthenticated';
 
 const ProfileDropDown = ({ onSignOut }) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);

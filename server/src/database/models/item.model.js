@@ -69,7 +69,6 @@ const itemSchema = new mongoose.Schema({
 
   categoryId: {
     type: mongoose.SchemaTypes.ObjectId,
-    required: true,
     ref: 'categories',
   },
 

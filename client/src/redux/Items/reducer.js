@@ -2,6 +2,7 @@ import * as actionTypes from './actionTypes';
 
 const INITIAL_STATE = {
     items: [],
+    itemCount: 0,
     loading: false,
     error: null,
 };

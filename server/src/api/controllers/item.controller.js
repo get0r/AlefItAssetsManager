@@ -16,7 +16,7 @@ const newItem = catchAsync(async (req, res) => {
   const savedItem = await ItemService.createItem(item);
 
   if (!savedItem) {
-    return sendErrorResponse(res, BAD_REQUEST, 'Employee with the associated seria/imei number already exists');
+    return sendErrorResponse(res, BAD_REQUEST, 'Employee with the associated serial/imei number already exists');
   }
 
   return sendSuccessResponse(res, savedItem);

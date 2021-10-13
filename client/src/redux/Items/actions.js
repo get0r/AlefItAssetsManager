@@ -11,7 +11,10 @@ export const loadItems = () => {
             const items = itemsReq.data;
             return dispatch(loadSuccess(actionTypes.LOAD_ITEMS_SUCCESS, items.message));
         } catch (error) {
-            dispatch(loadFail(actionTypes.LOAD_ITEMS_FAIL, error.response.data.message));
+            if(error.response)
+                return dispatch(loadFail(actionTypes.LOAD_ITEMS_FAIL, error.response.data.message));
+            return dispatch(loadFail(actionTypes.LOAD_ITEMS_FAIL, error.message));
+
         }
     };
 };

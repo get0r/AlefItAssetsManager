@@ -7,10 +7,10 @@ itemRouter
   .post('/items', ItemController.newItem);
 
 itemRouter
-  .get('/items', ItemController.getItem);
+  .get('/items', ItemController.getItems);
 
 itemRouter
-  .get('/items/:itemId', ItemController.getItems);
+  .get('/items/:itemId', ItemController.getItem);
 
 itemRouter
   .patch('/items/:itemId', ItemController.updateItem);

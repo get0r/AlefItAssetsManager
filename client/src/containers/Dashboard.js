@@ -1,9 +1,8 @@
 import React, { useState } from 'react'
-import SideBar from './SideBar/SideBar';
-import NavBar from './NavBar/NavBar';
-import TileCardBar from './TileCardBar';
-import ItemList from './ItemList';
-import FloatingActionButton from './FloatingActionButton';
+import SideBar from '../components/SideBar/SideBar';
+import NavBar from '../components/NavBar/NavBar';
+import FloatingActionButton from '../components/Dashboard/FloatingActionButton';
+import ItemsContainer from './ItemsContainer';
 
 const Dashboard = (props) => {
     const [isItemCreateVisible, setIsItemCreateVisible] = useState(false);
@@ -20,11 +19,7 @@ const Dashboard = (props) => {
             <div className="flex-1 flex flex-col overflow-hidden">
                 <NavBar />
                 <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
-                    <div className="container mx-auto px-6 py-8">
-                        <h3 className="text-gray-700 text-3xl font-medium">Dashboard</h3>
-                        <TileCardBar />
-                        <ItemList />
-                    </div>
+                    <ItemsContainer />
                 </main>
             </div>
         </div>
