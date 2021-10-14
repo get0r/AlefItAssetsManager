@@ -29,7 +29,7 @@ const Dashboard = (props) => {
 
     return (
         <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
-            <FloatingActionButton onClick={ handleFloatingClick } onClick2={ handleFloatingClick2 }/>
+            <FloatingActionButton label='Create Item' onClick={ handleFloatingClick } onClick2={ handleFloatingClick2 }/>
             <ItemsContainer />
             <Modal show={isItemCreateVisible} btnLabel='Close' handleClose={handleModalClose}>
                 <ItemCreateModal onClick={handleModalClose}/>

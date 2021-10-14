@@ -13,6 +13,17 @@ export const employeesReducer = (state = INITIAL_STATE, action) => {
     const { type, payload } = action;
 
     switch(type) {
+        case actionTypes.ADD_EMPLOYEE_SUCCESS:
+            return {
+                ...state,
+                employees: [...state.employees, payload],
+                error: null,
+            };
+        case actionTypes.ADD_EMPLOYEE_FAIL:
+            return {
+                ...state,
+                error: payload,
+            };
         case actionTypes.LOAD_EMPLOYEES_BEGIN:
             return {
                 ...state,

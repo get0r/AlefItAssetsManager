@@ -4,7 +4,7 @@ import EmployeeCard from './EmployeeCard';
 const EmployeeList = ({ employees }) => {
     const renderEmployees = () => {
         return employees.map(employee => (
-            <EmployeeCard employee={ employee } />
+            <EmployeeCard key={employee._id} employee={ employee } />
         ));
     };
 
