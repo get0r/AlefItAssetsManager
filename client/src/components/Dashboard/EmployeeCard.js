@@ -1,13 +1,15 @@
 import React from 'react';
 
+import avatar from '../../assets/images/avatar_male.jpg'
+
 const EmployeeCard = ({ employee }) => {
     return (
-        <div class="max-w-3xl w-full mx-auto z-10">
+        <div class="max-w-3xl w-full mx-auto z-auto">
             <div class="flex flex-col">
                 <div class="bg-white border border-white shadow-lg  rounded-3xl p-4 m-4">
                     <div class="flex-none sm:flex">
                         <div class=" relative h-32 w-32   sm:mb-0 mb-3">
-                            <img src="https://tailwindcomponents.com/storage/avatars/njkIbPhyZCftc4g9XbMWwVsa7aGVPajYLRXhEeoo.jpg" alt="aji" class=" w-32 h-32 object-cover rounded-2xl" />
+                            <img src={avatar} alt="aji" class=" w-32 h-32 object-cover rounded-2xl" />
                         </div>
                         <div class="flex-auto sm:ml-5 justify-evenly">
                             <div class="flex items-center justify-between sm:mt-2">

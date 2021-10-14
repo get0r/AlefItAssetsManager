@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { AdminSignOut } from '../../redux/Admin/actions';
 import { connect } from 'react-redux';
+import avatar from '../../assets/images/avatar_male.jpg';
 
 const ProfileDropDown = ({ onSignOut }) => {
     const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -20,11 +21,8 @@ const ProfileDropDown = ({ onSignOut }) => {
     return (
             <div className="relative inline-block">
                 <div>
-                    <button type="button" className="relative block h-8 w-8 rounded-full border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
+                    <button type="button" style={{ backgroundImage: `url(${avatar})` }} className="bg-cover rounded-full relative block h-8 w-8 border border-gray-300 shadow-sm px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500"
                         onClick={handleDropdownClick}>
-                        <img className="h-full w-full object-cover"
-                            src="https://images.unsplash.com/photo-1528892952291-009c663ce843?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=crop&amp;w=296&amp;q=80"
-                            alt="avatar" />
                     </button>
                 </div>
 
