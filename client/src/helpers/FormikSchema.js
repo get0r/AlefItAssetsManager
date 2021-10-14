@@ -18,6 +18,24 @@ const SignUpSchema = yup.object().shape({
         .required(),
 });
 
+const employeeSchema = yup.object().shape({
+    fname: yup
+        .string()
+        .required(),
+
+    lname: yup
+        .string()
+        .required(),
+
+    jobTitle: yup
+        .string()
+        .required(),
+
+    empId: yup
+        .string()
+        .required(),
+});
+
 const loginSchema = yup.object().shape({
     username: yup
         .string()
@@ -43,4 +61,5 @@ export {
     SignUpSchema,
     loginSchema,
     itemSchema,
+    employeeSchema,
 };

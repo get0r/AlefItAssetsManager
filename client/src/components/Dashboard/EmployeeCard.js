@@ -13,9 +13,9 @@ const EmployeeCard = ({ employee }) => {
                             <div class="flex items-center justify-between sm:mt-2">
                                 <div class="flex items-center">
                                     <div class="flex flex-col">
-                                        <div class="w-full flex-none text-lg text-gray-800 font-bold leading-none">Aji</div>
+                                        <div class="w-full flex-none text-lg text-gray-800 font-bold leading-none">{`${employee.fname} ${employee.lname}`} </div>
                                         <div class="flex-auto text-gray-500 my-1">
-                                            <span class="mr-3 ">UI/UX Designer</span><span class="mr-3 border-r border-gray-200  max-h-0"></span><span>Cochin, IND</span>
+                                            <span class="mr-3 ">{employee.jobTitle}</span><span class="mr-3 border-r border-gray-200  max-h-0"></span><span>{employee.dept}</span>
                                         </div>
                                     </div>
                                 </div>
@@ -24,11 +24,7 @@ const EmployeeCard = ({ employee }) => {
                             </div>
                             <div class="flex pt-2  text-sm text-gray-500">
                                 <div class="flex-1 inline-flex items-center">
-                                    <p class="">1.2k Followers</p>
-                                </div>
-                                <div class="flex-1 inline-flex items-center">
-
-                                    <p class="">14 Components</p>
+                                    <p class="">Employee Id: {employee.empId}</p>
                                 </div>
                                 <button class="flex-no-shrink bg-red-400 hover:bg-red-500 px-5 ml-4 py-2 text-xs shadow-sm hover:shadow-lg font-medium tracking-wider border-2 border-red-300 hover:border-red-500 text-white rounded-full transition ease-in duration-300">DELETE</button>
                             </div>

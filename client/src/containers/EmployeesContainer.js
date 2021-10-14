@@ -4,14 +4,14 @@ import { connect } from 'react-redux';
 import Loader from '../components/Loader';
 import EmployeeList from '../components/Dashboard/EmployeeList';
 import ErrorMessage from '../components/Dashboard/ErrorMessage';
+import { loadEmployees } from '../redux/Employees/actions';
 
-const EmployeesContainer = ({ employees, error, loadEmployees }) => {
+const EmployeesContainer = ({ employees, error, onLoadEmployees }) => {
 
     useEffect(() => {
-        if(employees.length === 0)
-            loadEmployees();
+        onLoadEmployees();
 
-    }, [loadEmployees]);
+    }, [onLoadEmployees]);
 
     return (
         <div className="container mx-auto px-6 py-8">
@@ -34,7 +34,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        loadEmployees: () => dispatch(loadEmployees()),
+        onLoadEmployees: () => dispatch(loadEmployees()),
     };
 };
 
