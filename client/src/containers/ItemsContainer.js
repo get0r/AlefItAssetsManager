@@ -4,13 +4,14 @@ import ItemList from '../components/Dashboard/ItemList';
 import { loadItems } from '../redux/Items/actions';
 import { connect } from 'react-redux';
 import Loader from '../components/Loader';
-import { ErrorMessage } from 'formik';
 import TileCardContainer from './TileCardContainer';
+import ErrorMessage from '../components/Dashboard/ErrorMessage';
 
 const ItemsContainer = ({ items, error, loadItems }) => {
 
     useEffect(() => {
-        loadItems();
+        if(items.length === 0)
+            loadItems();
 
     }, [loadItems]);
 
