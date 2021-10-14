@@ -1,10 +1,10 @@
 import React from 'react';
 import ItemCard from './ItemCard';
 
-const ItemList = ({ items }) => {
+const ItemList = ({ items, onDeleteClick }) => {
     const renderItems = () => {
         return items.map(item => (
-            <ItemCard key={item._id} item={item} />
+            <ItemCard onDelete={onDeleteClick} key={item._id} item={item} />
         ));
     };
 

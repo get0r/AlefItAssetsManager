@@ -23,6 +23,17 @@ export const itemsReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 error: payload,
             };
+        case actionTypes.DELETE_ITEM_SUCCESS:
+            return {
+                ...state,
+                items: state.items.filter(item => item._id !== payload._id),
+                error: null,
+            };
+        case actionTypes.DELETE_ITEM_FAIL:
+            return {
+                ...state,
+                error: payload,
+            };
         case actionTypes.LOAD_ITEMS_BEGIN:
             return {
                 ...state,

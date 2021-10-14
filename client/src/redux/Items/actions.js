@@ -17,6 +17,20 @@ export const addItem = (item) => {
     };
 };
 
+export const deleteItem = (itemId) => {
+    return async dispatch => {
+        try {
+            const itemReq = await ApiFunctions.removeItem(itemId);
+            const itemData = itemReq.data;
+            return dispatch(loadSuccess(actionTypes.DELETE_ITEM_SUCCESS, itemData.message));
+        } catch (error) {
+            if(error.response)
+                return dispatch(loadFail(actionTypes.DELETE_ITEM_FAIL, error.response.data.message));
+            return dispatch(loadFail(actionTypes.DELETE_ITEM_FAIL, error.message));
+        }
+    };
+};
+
 export const loadItems = () => {
     return async dispatch => {
         dispatch(loadBegin(actionTypes.LOAD_ITEMS_BEGIN));
