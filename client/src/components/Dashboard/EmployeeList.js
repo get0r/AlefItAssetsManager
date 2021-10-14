@@ -1,10 +1,10 @@
 import React from 'react';
 import EmployeeCard from './EmployeeCard';
 
-const EmployeeList = ({ employees }) => {
+const EmployeeList = ({ employees, onDeleteClick }) => {
     const renderEmployees = () => {
         return employees.map(employee => (
-            <EmployeeCard key={employee._id} employee={ employee } />
+            <EmployeeCard onDelete={onDeleteClick} key={employee._id} employee={ employee } />
         ));
     };
 
