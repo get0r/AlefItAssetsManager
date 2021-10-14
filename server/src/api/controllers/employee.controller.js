@@ -50,6 +50,12 @@ const getEmployees = catchAsync(async (req, res) => {
   return sendSuccessResponse(res, employees);
 });
 
+const getEmployeeCount = catchAsync(async (req, res) => {
+  const employees = await EmployeeService.countEmployees();
+
+  return sendSuccessResponse(res, employees);
+});
+
 /**
  * a method to delete employee item.
  * and send response to the client
@@ -89,4 +95,5 @@ module.exports = {
   getEmployee,
   removeEmployee,
   updateEmployee,
+  getEmployeeCount,
 };

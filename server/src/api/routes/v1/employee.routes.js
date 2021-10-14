@@ -13,6 +13,9 @@ employeeRouter
   .get('/employees/:employeeId', EmployeeController.getEmployee);
 
 employeeRouter
+  .get('/employeeCount', EmployeeController.getEmployeeCount);
+
+employeeRouter
   .patch('/employees/:employeeId', EmployeeController.updateEmployee);
 
 employeeRouter

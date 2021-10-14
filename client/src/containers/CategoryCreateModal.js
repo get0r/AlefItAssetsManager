@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Form from '../components/CustomForm';
 import { Formik } from 'formik';
 import { itemSchema } from '../helpers/FormikSchema';
 import { addCategory } from '../redux/Categories/actions';
 import { connect } from 'react-redux';
-import Modal from '../components/Modal';
 
 const CategoryCreateModal = ({ categories, onAddCategory, onClick }) => {
 
@@ -38,7 +37,7 @@ const CategoryCreateModal = ({ categories, onAddCategory, onClick }) => {
 };
 
 const mapStateToProps = state => ({
-    categories: state.categories
+    categories: state.categories.categories
 });
 
 const mapDispatchToProps = dispatch => ({

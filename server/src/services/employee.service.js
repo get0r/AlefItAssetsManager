@@ -52,6 +52,12 @@ const getAllEmployees = async () => {
   return employees;
 };
 
+const countEmployees = async () => {
+  const count = await EmployeeModel.countDocuments().lean();
+
+  return count;
+};
+
 /**
  * a method to delete employee record from db using its id.
  * @param {String} empId employee id
@@ -95,4 +101,5 @@ module.exports = {
   getEmployeeById,
   removeEmployeeById,
   updateEmployeeById,
+  countEmployees,
 };

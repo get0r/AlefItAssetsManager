@@ -11,4 +11,7 @@ export const ITEM_COUNT = '/itemCount';
 export const CATEGORIES = '/categories';
 export const CATEGORY_COUNT = '/categoryCount';
 
+export const EMPLOYEES = '/employees';
+export const EMPLOYEE_COUNT = '/employeeCount';
+
 export const withId = (id,route) => `${route}/${id}`;

@@ -2,7 +2,7 @@ import React from 'react';
 
 const MenuItem = ({ label, active }) => {
     const baseClass = 'flex items-center mt-4 py-4 px-6 bg-opacity-25 text-gray-100';
-    const menuClass = active ? `bg-gray-700 ${baseClass}` : baseClass;
+    const menuClass = active ? `bg-gray-400 ${baseClass}` : baseClass;
 
     return (
         <a className={menuClass} href="/">
