@@ -77,12 +77,14 @@ const itemSchema = new mongoose.Schema({
     default: true,
   },
 
-  taken: {
-    isTaken: Boolean,
-    takerId: {
-      type: mongoose.SchemaTypes.ObjectId,
-      ref: 'employees',
-    },
+  isTaken: {
+    type: Boolean,
+    default: false,
+  },
+
+  takerId: {
+    type: String,
+    ref: 'employees',
   },
 },
 {

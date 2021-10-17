@@ -84,7 +84,7 @@ const updateItem = catchAsync(async (req, res) => {
     .updateItemById(req.params.itemId, req.body);
 
   if (!updatedItem) {
-    return sendErrorResponse(res, NOT_FOUND, 'Couldn\'t find item.');
+    return sendErrorResponse(res, NOT_FOUND, 'Couldn\'t find item or employee.');
   }
   return sendSuccessResponse(res, updatedItem);
 });

@@ -34,6 +34,21 @@ export const itemsReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 error: payload,
             };
+        case actionTypes.UPDATE_ITEM_SUCCESS:
+            const toBeUpdated = state.items.find(item => item._id === payload.itemId);
+            const withOutUpdated = state.items.filter(item => item._id !== payload.itemId);
+            const updated = {...toBeUpdated, ...payload.newObj };
+
+            return {
+                ...state,
+                items: [...withOutUpdated, updated],
+                error: null,
+            };
+        case actionTypes.UPDATE_ITEM_FAIL:
+            return {
+                ...state,
+                error: payload,
+            };
         case actionTypes.LOAD_ITEMS_BEGIN:
             return {
                 ...state,

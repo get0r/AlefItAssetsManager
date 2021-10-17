@@ -31,6 +31,20 @@ export const deleteItem = (itemId) => {
     };
 };
 
+export const updateItem = (itemId, newObj) => {
+    console.log('in actons');
+    return async dispatch => {
+        try {
+            await ApiFunctions.updateItem(itemId, newObj);
+            return dispatch(loadSuccess(actionTypes.UPDATE_ITEM_SUCCESS, {itemId, newObj}));
+        } catch (error) {
+            if(error.response)
+                return dispatch(loadFail(actionTypes.UPDATE_ITEM_FAIL, error.response.data.message));
+            return dispatch(loadFail(actionTypes.UPDATE_ITEM_FAIL, error.message));
+        }
+    };
+};
+
 export const loadItems = () => {
     return async dispatch => {
         dispatch(loadBegin(actionTypes.LOAD_ITEMS_BEGIN));

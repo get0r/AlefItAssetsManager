@@ -11,3 +11,5 @@ export const getItemCount = () => itemApi.get(ITEM_COUNT);
 export const createItem = (item) => itemApi.post(ITEMS, item);
 
 export const removeItem = (id) => itemApi.delete(withId(id, ITEMS));
+
+export const updateItem = (id, newObj) => itemApi.patch(withId(id, ITEMS), newObj);

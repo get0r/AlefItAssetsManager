@@ -31,6 +31,20 @@ export const deleteEmployee = (employeeId) => {
     };
 };
 
+export const loadEmployee = (employeeId) => {
+    return async dispatch => {
+        try {
+            const empReq = await ApiFunctions.getEmployee(employeeId);
+            const empData = empReq.data;
+            return dispatch(loadSuccess(actionTypes.LOAD_SINGLE_EMPLOYEE_SUCCESS, empData.message));
+        } catch (error) {
+            if(error.response)
+                return dispatch(loadFail(actionTypes.LOAD_SINGLE_EMPLOYEE_FAIL, error.response.data.message));
+            return dispatch(loadFail(actionTypes.LOAD_SINGLE_EMPLOYEE_FAIL, error.message));
+        }
+    };
+};
+
 export const loadEmployees = () => {
     return async dispatch => {
         dispatch(loadBegin(actionTypes.LOAD_EMPLOYEES_BEGIN));

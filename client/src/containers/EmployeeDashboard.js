@@ -4,8 +4,6 @@ import Modal from '../components/Modal';
 import EmployeesContainer from './EmployeesContainer';
 import EmployeeCreateModal from './EmployeeCreateModal';
 
-import { ToastContainer, toast } from 'react-toastify'
-
 const EmployeeDashboard = (props) => {
 
     const [isEmpCreateVisible, setIsEmpCreateVisible] = useState(false);

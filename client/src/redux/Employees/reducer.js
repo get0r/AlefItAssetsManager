@@ -35,6 +35,19 @@ export const employeesReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 error: payload,
             };
+        case actionTypes.LOAD_SINGLE_EMPLOYEE_SUCCESS:
+            const exists = state.employees.filter(employee => employee._id !== payload._id);
+
+            return {
+                ...state,
+                employees: [...exists, payload],
+                error: null,
+            };
+        case actionTypes.LOAD_SINGLE_EMPLOYEE_FAIL:
+            return {
+                ...state,
+                error: payload,
+            };
         case actionTypes.LOAD_EMPLOYEES_BEGIN:
             return {
                 ...state,

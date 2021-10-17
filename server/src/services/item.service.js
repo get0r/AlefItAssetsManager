@@ -1,4 +1,5 @@
 const ItemModel = require('../database/models/item.model');
+const EmployeeService = require('./employee.service');
 
 /**
  * a method to create a new item record in the database.
@@ -83,6 +84,12 @@ const updateItemById = async (itemId, updatedObject) => {
   const toBeUpdated = await getItemById(itemId);
   if (!toBeUpdated) {
     return null;
+  }
+  if (updatedObject.takerId) {
+    const doesUserExist = await EmployeeService.getEmployeeById(updatedObject.takerId);
+    if (!doesUserExist) {
+      return null;
+    }
   }
   const updatedItem = await ItemModel
     .updateOne({ _id: itemId }, { $set: updatedObject }).lean();

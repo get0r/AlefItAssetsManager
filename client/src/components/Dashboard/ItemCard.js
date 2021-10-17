@@ -2,9 +2,10 @@ import React from 'react';
 
 import placeholderImage from '../../assets/images/background.svg';
 
-const ItemCard = ({ item, onDelete }) => {
+const ItemCard = ({ item, onItemClick, onDelete }) => {
     return (
-        <div className="bg-white hover:shadow-xl shadow-md h-96 mx-3 my-4 rounded-xl flex flex-col justify-around items-center overflow-hidden sm:flex-row sm:h-52 sm:w-3/5 md:w-11/12">
+        <div className="bg-white hover:shadow-xl shadow-md h-96 mx-3 my-4 rounded-xl flex flex-col justify-around items-center overflow-hidden sm:flex-row sm:h-52 sm:w-3/5 md:w-11/12"
+            onClick={(e) => onItemClick(item)}>
             <img className="h-1/2 w-full sm:h-full sm:w-1/2 object-cover"
                 src={placeholderImage}
                 alt="" />
