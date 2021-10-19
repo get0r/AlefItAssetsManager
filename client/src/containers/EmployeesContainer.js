@@ -7,33 +7,39 @@ import ErrorMessage from '../components/Dashboard/ErrorMessage';
 import { deleteEmployee, loadEmployees } from '../redux/Employees/actions';
 import Modal from '../components/Modal';
 
-const EmployeesContainer = ({ employees, error, onLoadEmployees, onDeleteEmployee }) => {
+const EmployeesContainer = ({ searchTerm, employees, error, onLoadEmployees, onDeleteEmployee }) => {
 
     const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
     const [empId, setEmpId] = useState('');
+    const [currentEmps, setCurrentEmps] = useState([]);
 
     useEffect(() => {
-        onLoadEmployees();
-
-    }, [onLoadEmployees]);
+        if (employees.length === 0) {
+            onLoadEmployees();
+        } else {
+            const displayEmps = employees.filter(emp => emp.fname.concat(emp.lname).toLowerCase().includes(searchTerm.toLowerCase()));
+            setCurrentEmps(displayEmps);
+        }
+    }, [onLoadEmployees, searchTerm]);
 
     useEffect(() => {
         justCloseModal();
+        if(currentEmps.length === 0) setCurrentEmps(employees);
     }, [employees])
 
     const deleteEmployee = (employeeId) => {
         setEmpId(employeeId);
-        if(!isDeleteModalVisible) setIsDeleteModalVisible(true);
+        if (!isDeleteModalVisible) setIsDeleteModalVisible(true);
     };
 
     const handleModalClose = () => {
-        if(isDeleteModalVisible) {
+        if (isDeleteModalVisible) {
             onDeleteEmployee(empId);
         }
     };
 
     const justCloseModal = () => {
-        if(isDeleteModalVisible)
+        if (isDeleteModalVisible)
             setIsDeleteModalVisible(false);
     };
 
@@ -41,12 +47,12 @@ const EmployeesContainer = ({ employees, error, onLoadEmployees, onDeleteEmploye
         <div className="container mx-auto px-6 py-8">
             <h3 className="text-gray-700 text-3xl font-medium">Employees</h3>
             {
-                employees.length !== 0 ? <EmployeeList onDeleteClick={deleteEmployee} employees={ employees } /> :
-                    !error ? <Loader /> : <ErrorMessage message={error} />
+                employees.length !== 0 ? <EmployeeList onDeleteClick={ deleteEmployee } employees={ currentEmps } /> :
+                    !error ? <Loader /> : <ErrorMessage message={ error } />
             }
-            <Modal btnLabel="Yes" secondBtn show={isDeleteModalVisible}
-                title='Warning' handleClose={handleModalClose} handleClose2={justCloseModal}>
-                    <p>Are you sure you want to delete?</p>
+            <Modal btnLabel="Yes" secondBtn show={ isDeleteModalVisible }
+                title='Warning' handleClose={ handleModalClose } handleClose2={ justCloseModal }>
+                <p>Are you sure you want to delete?</p>
             </Modal>
         </div>
     );

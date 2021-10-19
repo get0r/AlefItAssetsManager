@@ -9,24 +9,30 @@ import ErrorMessage from '../components/Dashboard/ErrorMessage';
 import Modal from '../components/Modal';
 import ItemUpdateModal from './ItemUpdateModal';
 
-const ItemsContainer = ({ items, error, loadItems, onDeleteItem }) => {
+const ItemsContainer = ({ searchTerm, items, error, loadItems, onDeleteItem }) => {
 
     const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
     const [isUpdateModalVisible, setIsUpdateModalVisible] = useState(false);
+    const [currentItems, setCurrentItems] = useState([]);
 
     const [itemId, setItemId] = useState('');
     const [item, setItem] = useState('');
 
     useEffect(() => {
-        if(items.length === 0)
+        if(items.length === 0){
             loadItems();
-
-    }, [loadItems]);
+        }
+        else {
+            const diplayItems = items.filter(item => item.name.toLowerCase().includes(searchTerm.toLowerCase()));
+            setCurrentItems(diplayItems);
+        }
+    }, [loadItems, searchTerm]);
 
 
     useEffect(() => {
         justCloseModal();
-    }, [items])
+        if(currentItems.length === 0) setCurrentItems(items);
+    }, [items]);
 
     const deleteItem = (itemId) => {
         setItemId(itemId);
@@ -63,7 +69,7 @@ const ItemsContainer = ({ items, error, loadItems, onDeleteItem }) => {
             <h3 className="text-gray-700 text-3xl font-medium">Dashboard</h3>
             <TileCardContainer />
             {
-                items.length !== 0 ? <ItemList onItemClick={onItemClick} onDeleteClick={deleteItem} items={ items } /> :
+                items.length !== 0 ? <ItemList onItemClick={onItemClick} onDeleteClick={deleteItem} items={ currentItems } /> :
                     !error ? <Loader /> : <ErrorMessage message={error} />
             }
             <Modal btnLabel="Yes" secondBtn show={isDeleteModalVisible}

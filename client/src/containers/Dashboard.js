@@ -5,7 +5,7 @@ import ItemsContainer from './ItemsContainer';
 import ItemCreateModal from './ItemCreateModal';
 import CategoryCreateModal from './CategoryCreateModal';
 
-const Dashboard = (props) => {
+const Dashboard = ({ searchTerm }) => {
     const [isItemCreateVisible, setIsItemCreateVisible] = useState(false);
     const [isCatCreateVisible, setIsCatCreateVisible] = useState(false);
 
@@ -30,7 +30,7 @@ const Dashboard = (props) => {
     return (
         <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
             <FloatingActionButton label='Create Item' onClick={ handleFloatingClick } onClick2={ handleFloatingClick2 }/>
-            <ItemsContainer />
+            <ItemsContainer searchTerm={searchTerm} />
             <Modal show={isItemCreateVisible} btnLabel='Close' handleClose={handleModalClose}>
                 <ItemCreateModal onClick={handleModalClose}/>
             </Modal>

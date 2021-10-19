@@ -4,7 +4,7 @@ import Modal from '../components/Modal';
 import EmployeesContainer from './EmployeesContainer';
 import EmployeeCreateModal from './EmployeeCreateModal';
 
-const EmployeeDashboard = (props) => {
+const EmployeeDashboard = ({ searchTerm }) => {
 
     const [isEmpCreateVisible, setIsEmpCreateVisible] = useState(false);
 
@@ -21,7 +21,7 @@ const EmployeeDashboard = (props) => {
     return (
         <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
             <FloatingActionButton noTwoAction label='Add Employee' onClick={ handleFloatingClick } />
-            <EmployeesContainer />
+            <EmployeesContainer searchTerm={searchTerm} />
             <Modal show={isEmpCreateVisible} btnLabel='Close' handleClose={handleModalClose}>
                 <EmployeeCreateModal onClick={handleModalClose} />
             </Modal>
