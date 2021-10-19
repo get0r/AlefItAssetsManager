@@ -40,7 +40,6 @@ const ItemsContainer = ({ searchTerm, items, error, loadItems, onDeleteItem }) =
 
     const deleteItem = (itemId) => {
         setItemId(itemId);
-        if(isUpdateModalVisible) setIsUpdateModalVisible(false);
         if(!isDeleteModalVisible) setIsDeleteModalVisible(true);
     };
 
@@ -59,8 +58,9 @@ const ItemsContainer = ({ searchTerm, items, error, loadItems, onDeleteItem }) =
 
     const onItemClick = item => {
         setItem(item);
-        if(!isUpdateModalVisible)
+        if(!isUpdateModalVisible && !isDeleteModalVisible) {
             setIsUpdateModalVisible(true);
+        }
     }
 
     const handleUpdateModalClose = () => {

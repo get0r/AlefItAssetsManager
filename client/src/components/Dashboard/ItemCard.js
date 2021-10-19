@@ -28,7 +28,7 @@ const ItemCard = ({ item, onItemClick, onDelete }) => {
                     <p className="text-gray-500">{item.isFunctional ? `Functional` : `Not Functional`}</p>
 
                     <button className="flex-no-shrink bg-red-500 hover:bg-red-500 px-5 ml-4 py-2 text-xs shadow-sm hover:shadow-lg font-medium tracking-wider hover:border-red-500 text-white rounded-full transition ease-in duration-300"
-                            onClick={() => onDelete(item._id)}>DELETE
+                            onClick={e => { e.stopPropagation(); onDelete(item._id); }}>DELETE
                     </button>
                 </div>
             </div>

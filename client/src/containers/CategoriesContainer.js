@@ -2,9 +2,7 @@ import React, { useEffect, useState } from 'react';
 
 import { connect } from 'react-redux';
 import Loader from '../components/Loader';
-import EmployeeList from '../components/Dashboard/EmployeeList';
 import ErrorMessage from '../components/Dashboard/ErrorMessage';
-import { deleteEmployee, loadEmployees } from '../redux/Employees/actions';
 import Modal from '../components/Modal';
 import { deleteCategory, loadCategories } from '../redux/Categories/actions';
 import CategoryList from '../components/Dashboard/CategoryList';
@@ -51,7 +49,7 @@ const CategoriesContainer = ({ searchTerm, categories, error, onLoadCategories, 
 
     return (
         <div className="container mx-auto px-6 py-8">
-            <h3 className="text-gray-700 text-3xl font-medium">Employees</h3>
+            <h3 className="text-gray-700 text-3xl font-medium">Categories</h3>
             {
                 categories.length !== 0 ? <CategoryList onDeleteClick={ deleteCategory } categories={ currentCats } /> :
                     !error ? <Loader /> : <ErrorMessage message={ error } />
