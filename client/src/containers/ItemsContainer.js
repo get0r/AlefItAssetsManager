@@ -32,6 +32,10 @@ const ItemsContainer = ({ searchTerm, items, error, loadItems, onDeleteItem }) =
     useEffect(() => {
         justCloseModal();
         if(currentItems.length === 0) setCurrentItems(items);
+        else {
+            const diplayItems = items.filter(item => item.name.toLowerCase().includes(searchTerm.toLowerCase()));
+            setCurrentItems(diplayItems);
+        }
     }, [items]);
 
     const deleteItem = (itemId) => {

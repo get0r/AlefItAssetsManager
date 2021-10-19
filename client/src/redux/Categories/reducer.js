@@ -23,6 +23,36 @@ export const categoriesReducer = (state = INITIAL_STATE, action) => {
                 ...state,
                 error: payload,
             };
+        case actionTypes.DELETE_CATEGORY_SUCCESS:
+            return {
+                ...state,
+                categories: state.categories.filter(cat => cat._id !== payload._id),
+                error: null,
+            };
+        case actionTypes.DELETE_CATEGORY_FAIL:
+            return {
+                ...state,
+                error: payload,
+            };
+        case actionTypes.LOAD_CATEGORIES_BEGIN:
+            return {
+                ...state,
+                loading: true,
+                error: null,
+            };
+        case actionTypes.LOAD_CATEGORIES_SUCCESS:
+            return {
+                ...state,
+                categories: [...payload],
+                loading: false,
+                error: null,
+            };
+        case actionTypes.LOAD_CATEGORIES_FAIL:
+            return {
+                ...state,
+                loading: false,
+                error: payload,
+            };
         case actionTypes.LOAD_CATEGORY_COUNT:
             return {
                 ...state,

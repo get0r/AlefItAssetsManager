@@ -7,6 +7,7 @@ import Auth from '../pages/Auth';
 import SetUpAccount from '../pages/SetUpAccount';
 import Home from '../pages/Home';
 import Employees from '../pages/Employees';
+import Categories from '../pages/Categories';
 
 const Routes = () => {
     return (
@@ -14,6 +15,7 @@ const Routes = () => {
         <Switch>
           <PrivateRoute component={Home} path="/" exact />
           <PrivateRoute component={Employees} path="/employees" exact />
+          <PrivateRoute component={Categories} path="/categories" exact />
           <PublicRoute component={Auth} path="/signIn" exact />
           <PublicRoute component={SetUpAccount} path="/signUp" exact />
         </Switch>

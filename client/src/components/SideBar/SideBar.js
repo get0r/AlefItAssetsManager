@@ -7,6 +7,7 @@ const SideBar = () => {
 
     const isHomeActive = window.location.pathname === '/' ? true : false;
     const isEmpActive = window.location.pathname === '/employees' ? true : false;
+    const isCatActive = window.location.pathname === '/categories' ? true : false;
 
     const onMenuItemClick = e => {
         setShouldRender(!shouldRender);
@@ -18,6 +19,7 @@ const SideBar = () => {
             <nav  className="mt-10">
                 <MenuItem label="Home" active={isHomeActive} to="/" onClick={onMenuItemClick}/>
                 <MenuItem label="Employee" active={isEmpActive} to="/employees" onClick={onMenuItemClick}/>
+                <MenuItem label="Categories" active={isCatActive} to="/categories" onClick={onMenuItemClick}/>
             </nav>
         </div>
     );

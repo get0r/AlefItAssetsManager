@@ -6,39 +6,41 @@ import EmployeeList from '../components/Dashboard/EmployeeList';
 import ErrorMessage from '../components/Dashboard/ErrorMessage';
 import { deleteEmployee, loadEmployees } from '../redux/Employees/actions';
 import Modal from '../components/Modal';
+import { deleteCategory, loadCategories } from '../redux/Categories/actions';
+import CategoryList from '../components/Dashboard/CategoryList';
 
-const EmployeesContainer = ({ searchTerm, employees, error, onLoadEmployees, onDeleteEmployee }) => {
+const CategoriesContainer = ({ searchTerm, categories, error, onLoadCategories, onDeleteCategories }) => {
 
     const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
-    const [empId, setEmpId] = useState('');
-    const [currentEmps, setCurrentEmps] = useState([]);
+    const [catId, setCatId] = useState('');
+    const [currentCats, setCurrentCats] = useState([]);
 
     useEffect(() => {
-        if (employees.length === 0) {
-            onLoadEmployees();
+        if (categories.length === 0) {
+            onLoadCategories();
         } else {
-            const displayEmps = employees.filter(emp => emp.fname.concat(emp.lname).toLowerCase().includes(searchTerm.toLowerCase()));
-            setCurrentEmps(displayEmps);
+            const displayCats = categories.filter(cat => cat.name.toLowerCase().includes(searchTerm.toLowerCase()));
+            setCurrentCats(displayCats);
         }
-    }, [onLoadEmployees, searchTerm]);
+    }, [onLoadCategories, searchTerm]);
 
     useEffect(() => {
         justCloseModal();
-        if(currentEmps.length === 0) setCurrentEmps(employees);
+        if(currentCats.length === 0) setCurrentCats(categories);
         else {
-            const displayEmps = employees.filter(emp => emp.fname.concat(emp.lname).toLowerCase().includes(searchTerm.toLowerCase()));
-            setCurrentEmps(displayEmps);
+            const displayCats = categories.filter(cat => cat.name.toLowerCase().includes(searchTerm.toLowerCase()));
+            setCurrentCats(displayCats);
         }
-    }, [employees])
+    }, [categories])
 
-    const deleteEmployee = (employeeId) => {
-        setEmpId(employeeId);
+    const deleteCategory = (employeeId) => {
+        setCatId(employeeId);
         if (!isDeleteModalVisible) setIsDeleteModalVisible(true);
     };
 
     const handleModalClose = () => {
         if (isDeleteModalVisible) {
-            onDeleteEmployee(empId);
+            onDeleteCategories(catId);
         }
     };
 
@@ -51,7 +53,7 @@ const EmployeesContainer = ({ searchTerm, employees, error, onLoadEmployees, onD
         <div className="container mx-auto px-6 py-8">
             <h3 className="text-gray-700 text-3xl font-medium">Employees</h3>
             {
-                employees.length !== 0 ? <EmployeeList onDeleteClick={ deleteEmployee } employees={ currentEmps } /> :
+                categories.length !== 0 ? <CategoryList onDeleteClick={ deleteCategory } categories={ currentCats } /> :
                     !error ? <Loader /> : <ErrorMessage message={ error } />
             }
             <Modal btnLabel="Yes" secondBtn show={ isDeleteModalVisible }
@@ -64,16 +66,16 @@ const EmployeesContainer = ({ searchTerm, employees, error, onLoadEmployees, onD
 
 const mapStateToProps = state => {
     return {
-        employees: state.employees.employees,
-        error: state.employees.error,
+        categories: state.categories.categories,
+        error: state.categories.error,
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        onLoadEmployees: () => dispatch(loadEmployees()),
-        onDeleteEmployee: (id) => dispatch(deleteEmployee(id)),
+        onLoadCategories: () => dispatch(loadCategories()),
+        onDeleteCategories: (id) => dispatch(deleteCategory(id)),
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(EmployeesContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(CategoriesContainer);
