@@ -11,7 +11,8 @@ const { BAD_REQUEST, NOT_FOUND } = require('../../helpers/constants/statusCodeCo
  * @param {Object} res response object
  */
 const newItem = catchAsync(async (req, res) => {
-  const item = req.body;
+  const { price } = req.body;
+  const item = { ...req.body, price: { purchased: price } };
 
   const savedItem = await ItemService.createItem(item);
 

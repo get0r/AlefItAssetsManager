@@ -17,7 +17,7 @@ const EmployeesContainer = ({ searchTerm, employees, error, onLoadEmployees, onD
         if (employees.length === 0) {
             onLoadEmployees();
         } else {
-            const displayEmps = employees.filter(emp => emp.fname.concat(emp.lname).toLowerCase().includes(searchTerm.toLowerCase()));
+            const displayEmps = employees.filter(emp => emp.fname.concat(` ${emp.lname}`).toLowerCase().includes(searchTerm.toLowerCase()));
             setCurrentEmps(displayEmps);
         }
     }, [onLoadEmployees, searchTerm]);

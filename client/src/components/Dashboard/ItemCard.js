@@ -1,38 +1,54 @@
 import React from 'react';
+import millify from 'millify';
 
 import placeholderImage from '../../assets/images/background.svg';
 
 const ItemCard = ({ item, onItemClick, onDelete }) => {
-    return (
-        <div className="bg-white hover:shadow-xl shadow-md h-96 mx-3 my-4 rounded-xl flex flex-col justify-around items-center overflow-hidden sm:flex-row sm:h-52 sm:w-3/5 md:w-11/12"
-            onClick={(e) => onItemClick(item)}>
-            <img className="h-1/2 w-full sm:h-full sm:w-1/2 object-cover"
-                src={placeholderImage}
-                alt="" />
-            <div className="flex-1 w-full flex flex-col items-baseline justify-around h-1/2 pl-6 sm:h-full sm:items-baseline sm:w-1/2">
-                <div className="flex flex-col justify-start items-baseline">
-                    <h1 className="text-lg font-normal mb-0 text-gray-600 font-sans">
-                        {item.name}
-                    </h1>
-                    <span className="text-xs text-indigo-300 mt-0">Brand: {item.brand}</span>
-                    <span className="text-xs text-indigo-300 mt-0">Model: {item.model}</span>
-                    <span className="text-xs text-indigo-300 mt-0">Service No: {item.serviceNo}</span>
-                </div>
-                <p className="text-xs text-gray-500 w-4/5">
-                    { item.serialNo ? `Serial No: ${item.serialNo}` :
-                        item.imeiNo ? `IMEI No: ${item.imeiNo}` :
-                            item.systemModel ? `System Model: ${item.systemModel}` : null
-                    }
-                </p>
-                <div className="w-full flex items-center">
-                    <p className="text-gray-500">{item.isFunctional ? `Functional` : `Not Functional`}</p>
 
-                    <button className="flex-no-shrink bg-red-500 hover:bg-red-500 px-5 ml-4 py-2 text-xs shadow-sm hover:shadow-lg font-medium tracking-wider hover:border-red-500 text-white rounded-full transition ease-in duration-300"
-                            onClick={e => { e.stopPropagation(); onDelete(item._id); }}>DELETE
-                    </button>
+    return (
+        <tr className="bg-gray-800">
+            <td className="p-3">
+                <div className="flex align-items-center">
+                    <img className="rounded-full h-12 w-12  object-cover" src={ placeholderImage } alt="pimage" />
+                    <div className="ml-3">
+                        <div className="">{ item.name }</div>
+                        <div className="text-gray-500">{ item.brand }</div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </td>
+            <td className="p-3">
+                { item.serviceNo || '-'  }
+            </td>
+            <td className="p-3">
+                { item.serialNo ? item.serialNo : item.imeiNo || '-'  }
+            </td>
+            <td className="p-3 font-bold">
+                { item.model || '-' }
+            </td>
+            <td className="p-3 font-bold">
+                { item.systemModel || '-'  }
+            </td>
+            <td className="p-3 font-bold">
+                {  item.systemSKU || '-'  }
+            </td>
+            <td className="p-3 font-bold">
+                { item.price ? `Br. ${millify(item.price.purchased)}` : item.accountNo || '-' }
+            </td>
+            <td className="p-3">
+                <span className="bg-green-400 text-gray-50 rounded-md px-2">{ item.isFunctional ? 'Yes' : 'No' }</span>
+            </td>
+            <td className="p-3 ">
+                <button className="text-gray-400 hover:text-gray-100 mx-2"
+                    onClick={ (e) => onItemClick(item) } >
+                    <i className="material-icons-outlined text-base">edit</i>
+                </button>
+                <button className="text-gray-400 hover:text-gray-100 ml-2"
+                    onClick={ e => { e.stopPropagation(); onDelete(item._id); } } >
+                    <i className="material-icons-round text-base hover:text-red-600">delete</i>
+                </button>
+            </td>
+        </tr>
+
     );
 };
 
