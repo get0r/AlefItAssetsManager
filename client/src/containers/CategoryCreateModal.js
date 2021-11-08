@@ -12,7 +12,6 @@ const CategoryCreateModal = ({ categories, error, onAddCategory, onClick }) => {
     const [errorL, setErrorL] = useState(null);
 
     useEffect(() => {
-        console.log(error)
         if (error) {
             setErrorL(error);
         } else {
