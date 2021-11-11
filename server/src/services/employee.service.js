@@ -1,4 +1,5 @@
 const EmployeeModel = require('../database/models/employee.model');
+const ItemModel = require('../database/models/item.model');
 
 /**
  * a method to create a new Employee record in the database.
@@ -68,6 +69,13 @@ const removeEmployeeById = async (empId) => {
   if (!toBeRemoved) {
     return null;
   }
+
+  const linkedItemsExist = await ItemModel.find({ empId });
+  if (linkedItemsExist.length !== 0) {
+    console.log(linkedItemsExist);
+    return 'ITEM';
+  }
+
   const removedEmployee = await EmployeeModel.deleteOne({ empId }).lean();
   if (!removedEmployee) {
     return null;

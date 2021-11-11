@@ -31,7 +31,7 @@ const ItemUpdateModal = ({ item, error, employees, items, onClick, onUpdateItem,
     };
 
     const onSubmit = values => {
-        if (!item.takerId && item.takerId instanceof Number) {
+        if (!item.takerId) {
             onUpdateItem(item._id, { ...values, isTaken: true });
         } else {
             onUpdateItem(item._id, { isTaken: values.returned === 'Yes' ? false : true });

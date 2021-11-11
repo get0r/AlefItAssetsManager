@@ -6,12 +6,14 @@ import EmployeeList from '../components/Dashboard/EmployeeList';
 import ErrorMessage from '../components/Dashboard/ErrorMessage';
 import { deleteEmployee, loadEmployees } from '../redux/Employees/actions';
 import Modal from '../components/Modal';
+import Toast from 'tailwind-toast';
 
 const EmployeesContainer = ({ searchTerm, employees, error, onLoadEmployees, onDeleteEmployee }) => {
 
     const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
     const [empId, setEmpId] = useState('');
     const [currentEmps, setCurrentEmps] = useState([]);
+    const { toast } = Toast;
 
     useEffect(() => {
         if (employees.length === 0) {
@@ -24,12 +26,25 @@ const EmployeesContainer = ({ searchTerm, employees, error, onLoadEmployees, onD
 
     useEffect(() => {
         justCloseModal();
+        if(error) {
+            toast()
+                    .warning('Error!', error)
+                    .with({
+                        duration: 4000,
+                        speed: 1000,
+                        positionX: 'end',
+                        positionY: 'top',
+                        color: 'bg-red-800',
+                        fontColor: 'red',
+                        fontTone: 200
+                    }).show()
+        }
         if(currentEmps.length === 0) setCurrentEmps(employees);
         else {
             const displayEmps = employees.filter(emp => emp.fname.concat(emp.lname).toLowerCase().includes(searchTerm.toLowerCase()));
             setCurrentEmps(displayEmps);
         }
-    }, [employees])
+    }, [employees, error])
 
     const deleteEmployee = (employeeId) => {
         setEmpId(employeeId);

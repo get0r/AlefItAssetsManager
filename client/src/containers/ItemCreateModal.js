@@ -77,7 +77,7 @@ const ItemCreateModal = ({ items, error, categories, onAddItem, onClick, onLoadC
                                         { label: 'Package', type: 'text', name: 'package' },
                                         { label: 'System Model', type: 'text', name: 'systemModel' },
                                         { label: 'System SKU', type: 'text', name: 'systemSKU' },
-                                        { label: 'Category', type: 'select', name: 'categoryId', options: categories },
+                                        { label: 'Category', type: 'select', name: 'categoryId', options: ['Select Category', ...categories] },
                                     ] }
                                     submitBtn='Create'>
                                 </Form>

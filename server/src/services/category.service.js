@@ -1,4 +1,5 @@
 const CategoryModel = require('../database/models/category.model');
+const ItemModel = require('../database/models/item.model');
 
 /**
  * a method to create a new category record in the database.
@@ -58,6 +59,11 @@ const removeCategoryById = async (categoryId) => {
   const toBeRemoved = await getCategoryById(categoryId);
   if (!toBeRemoved) {
     return null;
+  }
+
+  const linkedItemsExist = await ItemModel.find({ categoryId });
+  if (linkedItemsExist.length !== 0) {
+    return 'ITEM';
   }
   const removedCategory = await CategoryModel.deleteOne({ _id: categoryId }).lean();
   if (!removedCategory) {

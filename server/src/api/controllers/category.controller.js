@@ -66,6 +66,8 @@ const removeCategory = catchAsync(async (req, res) => {
   const removedCat = await CategoryServices.removeCategoryById(req.params.categoryId);
   if (!removedCat) {
     return sendErrorResponse(res, NOT_FOUND, 'Couldn\'t find category');
+  } if (removedCat === 'ITEM') {
+    return sendErrorResponse(res, BAD_REQUEST, 'Item\'s linked to this category exist. Delete them first.');
   }
   return sendSuccessResponse(res, removedCat);
 });

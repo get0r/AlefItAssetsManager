@@ -66,6 +66,8 @@ const removeEmployee = catchAsync(async (req, res) => {
   const removedEmp = await EmployeeService.removeEmployeeById(req.params.employeeId);
   if (!removedEmp) {
     return sendErrorResponse(res, NOT_FOUND, 'Couldn\'t find Employee');
+  } if (removedEmp === 'ITEM') {
+    return sendErrorResponse(res, BAD_REQUEST, 'Item\'s linked to this employee exists. Delete them first.');
   }
   return sendSuccessResponse(res, removedEmp);
 });

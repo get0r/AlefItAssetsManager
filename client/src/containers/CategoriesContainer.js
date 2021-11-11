@@ -6,12 +6,14 @@ import ErrorMessage from '../components/Dashboard/ErrorMessage';
 import Modal from '../components/Modal';
 import { deleteCategory, loadCategories } from '../redux/Categories/actions';
 import CategoryList from '../components/Dashboard/CategoryList';
+import Toast from 'tailwind-toast';
 
 const CategoriesContainer = ({ searchTerm, categories, error, onLoadCategories, onDeleteCategories }) => {
 
     const [isDeleteModalVisible, setIsDeleteModalVisible] = useState(false);
     const [catId, setCatId] = useState('');
     const [currentCats, setCurrentCats] = useState([]);
+    const { toast } = Toast;
 
     useEffect(() => {
         if (categories.length === 0) {
@@ -24,12 +26,25 @@ const CategoriesContainer = ({ searchTerm, categories, error, onLoadCategories, 
 
     useEffect(() => {
         justCloseModal();
+        if(error) {
+            toast()
+                    .warning('Error!', error)
+                    .with({
+                        duration: 4000,
+                        speed: 1000,
+                        positionX: 'end',
+                        positionY: 'top',
+                        color: 'bg-red-800',
+                        fontColor: 'red',
+                        fontTone: 200
+                    }).show()
+        }
         if(currentCats.length === 0) setCurrentCats(categories);
         else {
             const displayCats = categories.filter(cat => cat.name.toLowerCase().includes(searchTerm.toLowerCase()));
             setCurrentCats(displayCats);
         }
-    }, [categories])
+    }, [categories, error])
 
     const deleteCategory = (employeeId) => {
         setCatId(employeeId);
