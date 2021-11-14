@@ -1,10 +1,10 @@
 import alefApiCreator from './AlefApi';
 
-import { ITEMS, ITEM_COUNT, withId } from './constants/ApiConstants';
+import { ITEMS, ITEM_COUNT, withId, withQuery } from './constants/ApiConstants';
 
 const itemApi = alefApiCreator();
 
-export const getAllItems = () => itemApi.get(ITEMS);
+export const getAllItems = (page) => itemApi.get(withQuery(`page`, page, ITEMS));
 
 export const getItemCount = () => itemApi.get(ITEM_COUNT);
 

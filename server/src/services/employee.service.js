@@ -70,9 +70,9 @@ const removeEmployeeById = async (empId) => {
     return null;
   }
 
-  const linkedItemsExist = await ItemModel.find({ empId });
+  const linkedItemsExist = await ItemModel.find({ takerId: empId });
+
   if (linkedItemsExist.length !== 0) {
-    console.log(linkedItemsExist);
     return 'ITEM';
   }
 

@@ -2,7 +2,6 @@ import React from 'react';
 import CategoryCard from './CategoryCard';
 
 const CategoryList = ({ categories, onDeleteClick }) => {
-    console.log(categories);
     const renderCats = () => {
         return categories.map(cat => (
             <CategoryCard onDelete={onDeleteClick} key={cat._id} category={ cat } />

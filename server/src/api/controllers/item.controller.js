@@ -52,7 +52,9 @@ const getItemCount = catchAsync(async (req, res) => {
  * @param {Object} res response object
  */
 const getItems = catchAsync(async (req, res) => {
-  const items = await ItemService.getAllItems();
+  const page = parseInt(req.query.page, 10);
+
+  const items = await ItemService.getAllItems(page);
 
   return sendSuccessResponse(res, items);
 });

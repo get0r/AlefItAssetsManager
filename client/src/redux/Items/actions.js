@@ -45,11 +45,11 @@ export const updateItem = (itemId, newObj) => {
     };
 };
 
-export const loadItems = () => {
+export const loadItems = (page) => {
     return async dispatch => {
         dispatch(loadBegin(actionTypes.LOAD_ITEMS_BEGIN));
         try {
-            const itemsReq = await ApiFunctions.getAllItems();
+            const itemsReq = await ApiFunctions.getAllItems(page);
             const items = itemsReq.data;
             return dispatch(loadSuccess(actionTypes.LOAD_ITEMS_SUCCESS, items.message));
         } catch (error) {

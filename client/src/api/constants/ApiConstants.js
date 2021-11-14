@@ -15,3 +15,4 @@ export const EMPLOYEES = '/employees';
 export const EMPLOYEE_COUNT = '/employeeCount';
 
 export const withId = (id,route) => `${route}/${id}`;
+export const withQuery = (key, value, route) => `${route}?${key}=${value}`;

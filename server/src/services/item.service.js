@@ -48,8 +48,12 @@ const countItems = async () => {
  * a method to retrieve all items.
  * @returns retrieved items- might be empty
  */
-const getAllItems = async () => {
-  const items = await ItemModel.find().lean();
+
+const getAllItems = async (page) => {
+  const PAGE_SIZE = 5;
+  const skip = (page - 1) * PAGE_SIZE;
+
+  const items = await ItemModel.find().skip(skip).limit(PAGE_SIZE).lean();
   if (!items) {
     return [];
   }
