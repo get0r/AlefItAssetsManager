@@ -17,7 +17,7 @@ const development = {
 
 const production = {
   app: {
-    port: parseInt(process.env.PROD_APP_PORT, 10),
+    port: parseInt(process.env.PORT, 10),
     tokenSecret: process.env.TOKEN_SECRET,
     secureCookie: true,
     httpCookie: true,

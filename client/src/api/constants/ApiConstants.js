@@ -1,4 +1,4 @@
-export const BASE_URL = process.env.BASE_URL || 'http://localhost:3048/api/v1';
+export const BASE_URL = 'https://alefitassetmanager.herokuapp.com/api/v1';
 
 export const SIGNUP_ADMIN = '/signUp';
 export const SIGNIN_ADMIN = '/signIn';

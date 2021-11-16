@@ -49,7 +49,7 @@ const adminSignIn = catchAsync(async (req, res) => {
   //  place the token on the cookie and send the user
   res.cookie('token', token, { httpOnly: config.app.httpCookie, secure: config.app.secureCookie, sameSite: true });
 
-  return sendSuccessResponse(res, _.pick(admin, ['_id', 'fname', 'lname', 'username']));
+  return sendSuccessResponse(res, { ..._.pick(admin, ['_id', 'fname', 'lname', 'username']), token });
 });
 
 /**
