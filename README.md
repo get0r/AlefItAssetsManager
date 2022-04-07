@@ -1,7 +1,11 @@
 # AlefItAssetsManager
 A It assets tracking and management system which enables to track devices like computers, mobile phones and etc... in an organization by associating them with an employee.
 
-### Tracking Features
+### Live Version
+ <a href='https://alefmanager.netlify.app/'>Alef It Assets Manager v1.0</a>
+ 
+ 
+### Features
 - Register Employees
 - Register Devices
 - Associate devices with employee when he/she possess it
